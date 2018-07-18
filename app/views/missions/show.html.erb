@@ -1,5 +1,7 @@
 <p id="notice"><%= notice %></p>
 
+
+
 <p>
   <strong>Title:</strong>
   <%= @mission.title %>
@@ -10,5 +12,11 @@
   <%= @mission.content %>
 </p>
 
+<% if current_user.is_like?(@mission) %>
+<%= link_to "좋아요 취소", mission_like_path(@mission), method: "post" %>
+<%else%>
+<%= link_to "좋아요 ", mission_like_path(@mission), method: "post" %>
+<%end%>
+<br>
 <%= link_to 'Edit', edit_mission_path(@mission) %> |
 <%= link_to 'Back', missions_path %>
